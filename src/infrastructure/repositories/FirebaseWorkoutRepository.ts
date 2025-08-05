@@ -213,12 +213,12 @@ export class FirebaseWorkoutRepository implements IWorkoutRepository {
         workout.exercises.forEach(exercise => {
           stats.totalSets += exercise.sets.length;
           exercise.sets.forEach(set => {
-            stats.totalReps += set.reps;
-            stats.totalWeight += set.weight * set.reps;
+            stats.totalReps += set.reps || 0;
+            stats.totalWeight += (set.weight || 0) * (set.reps || 0);
             
             // Max weight
-            if (set.weight > stats.maxWeight) {
-              stats.maxWeight = set.weight;
+            if ((set.weight || 0) > stats.maxWeight) {
+              stats.maxWeight = set.weight || 0;
             }
           });
         });
