@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Plus, TrendingUp, History, BarChart3, User } from 'lucide-react';
+import { Plus, TrendingUp, History, BarChart3, User, Dumbbell } from 'lucide-react';
 import { useAuth, useUser, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import { useLocalTime } from '@/hooks/useClientOnly';
 import { clientWorkoutService } from '@/services/clientWorkoutService';
@@ -41,12 +41,12 @@ export default function HomePage() {
 
         const result = await response.json();
         const userWorkouts = result.workouts || [];
-        
+
         // Calculate weekly stats
         const oneWeekAgo = new Date();
         oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-        
-        const thisWeekWorkouts = userWorkouts.filter((workout: any) => 
+
+        const thisWeekWorkouts = userWorkouts.filter((workout: any) =>
           new Date(workout.date) >= oneWeekAgo
         );
 
@@ -134,19 +134,11 @@ export default function HomePage() {
       textColor: 'text-white',
     },
     {
-      title: 'Lịch sử tập luyện',
-      subtitle: 'Xem các buổi tập đã hoàn thành',
-      icon: History,
-      href: '/workout/history',
-      bgColor: 'bg-gray-600',
-      textColor: 'text-white',
-    },
-    {
-      title: 'Biểu đồ tiến độ',
-      subtitle: 'Theo dõi sự phát triển',
-      icon: TrendingUp,
-      href: '/progress',
-      bgColor: 'bg-primary-500',
+      title: 'Quản lý workouts',
+      subtitle: 'Xem, sửa, xóa workouts',
+      icon: Dumbbell,
+      href: '/workouts',
+      bgColor: 'bg-green-600',
       textColor: 'text-white',
     },
     {
@@ -155,6 +147,14 @@ export default function HomePage() {
       icon: BarChart3,
       href: '/stats',
       bgColor: 'bg-gray-700',
+      textColor: 'text-white',
+    },
+    {
+      title: 'Cá nhân',
+      subtitle: 'Cài đặt và thông tin',
+      icon: User,
+      href: '/profile',
+      bgColor: 'bg-indigo-600',
       textColor: 'text-white',
     },
   ];
@@ -173,9 +173,9 @@ export default function HomePage() {
             </SignedIn>
           </div>
           <div className="flex items-center space-x-3">
-            <SignedIn>
+            {/* <SignedIn>
               <UserButton />
-            </SignedIn>
+            </SignedIn> */}
             <SignedOut>
               <SignInButton mode="modal">
                 <button className="flex items-center text-sm bg-white bg-opacity-20 px-3 py-1 rounded-lg">

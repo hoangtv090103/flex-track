@@ -8,17 +8,24 @@ export interface User {
   updatedAt: Date;
 }
 
+export type WorkoutType = 'strength' | 'cardio' | 'hiit' | 'flexibility' | 'sports' | 'other';
+
 export interface Exercise {
   id: string;
   name: string;
+  type: WorkoutType;
   sets: Set[];
   notes?: string;
 }
 
 export interface Set {
   id: string;
-  reps: number;
-  weight: number;
+  reps?: number;
+  weight?: number;
+  duration?: number; // for cardio/HIIT in seconds
+  distance?: number; // for cardio in meters
+  restTime?: number; // rest between sets in seconds
+  intensity?: 'low' | 'medium' | 'high'; // for cardio/HIIT
   completed: boolean;
 }
 
