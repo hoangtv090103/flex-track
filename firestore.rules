@@ -1,0 +1,26 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow all operations for now (development only)
+    // TODO: Restrict this in production
+    match /{document=**} {
+      allow read, write: if true;
+    }
+    
+    // Test collection for connection testing
+    match /test/{testId} {
+      allow read, write: if true;
+    }
+    
+    // Init collection for database initialization
+    match /init/{initId} {
+      allow read, write: if true;
+    }
+    
+    // Workouts collection - allow all for now
+    match /workouts/{workoutId} {
+      allow read, write: if true;
+    }
+  }
+}
