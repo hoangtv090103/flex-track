@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
 import { diContainer } from '@/infrastructure/di/DIContainer';
 
+// Force this route to be treated as dynamic and not statically exported
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     // Verify the user is authenticated with Clerk
