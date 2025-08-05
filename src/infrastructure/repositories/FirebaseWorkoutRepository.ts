@@ -247,8 +247,8 @@ export class FirebaseWorkoutRepository implements IWorkoutRepository {
 
         if (targetExercise && targetExercise.sets.length > 0) {
           // Get max weight and reps for this workout
-          const maxWeight = Math.max(...targetExercise.sets.map(set => set.weight));
-          const maxReps = Math.max(...targetExercise.sets.map(set => set.reps));
+          const maxWeight = Math.max(...targetExercise.sets.map(set => set.weight || 0));
+          const maxReps = Math.max(...targetExercise.sets.map(set => set.reps || 0));
 
           progressData.push({
             date: workout.date,
