@@ -47,6 +47,7 @@ export default function NewWorkoutPage() {
       const newExercise: WorkoutExercise = {
         id: Date.now().toString(),
         name: newExerciseName,
+        type: 'strength', // Default to strength workout type
         sets: [],
       };
       // Add to top of the list instead of bottom
