@@ -172,10 +172,10 @@ export default function HomePage() {
               </div>
             </SignedIn>
           </div>
-          <div className="flex items-center space-x-3">
-            {/* <SignedIn>
+          {/* <div className="flex items-center space-x-3">
+            <SignedIn>
               <UserButton />
-            </SignedIn> */}
+            </SignedIn>
             <SignedOut>
               <SignInButton mode="modal">
                 <button className="flex items-center text-sm bg-white bg-opacity-20 px-3 py-1 rounded-lg">
@@ -184,7 +184,7 @@ export default function HomePage() {
                 </button>
               </SignInButton>
             </SignedOut>
-          </div>
+          </div> */}
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-2">FlexTrack</h1>
