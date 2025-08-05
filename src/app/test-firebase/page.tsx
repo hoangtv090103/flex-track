@@ -41,6 +41,7 @@ export default function TestFirebasePage() {
           {
             id: 'test-1',
             name: 'Test Exercise',
+            type: 'strength' as const,
             sets: [
               {
                 id: 'set-1',
